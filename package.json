@@ -1,0 +1,31 @@
+{
+  "name": "browser-spritefont",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:babel": "babel src --out-dir dist",
+    "build:browserify": "browserify dist/index.js --standalone SpriteFont > browser/spritefont.js",
+    "build": "npm run build:babel && npm run build:browserify",
+    "prepublish": "npm run build",
+    "test": "npm run build && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andormade/browser-spritefont.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "browserify": "^14.4.0",
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "jsdom": "^11.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.5.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}

@@ -1,0 +1,7 @@
+src
+node_modules
+.babelrc
+.gitignore
+browser
+.git
+test
