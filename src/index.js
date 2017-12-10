@@ -30,21 +30,13 @@ export default class SpriteFont {
 		});
 	}
 
-	static async load(spriteFont, rows, cols, fgColors, bgColors) {
-		let imageElement = this.loadImageElement(spriteFont);
-		let context = this.imageElement2Canvas(await imageElement);
-		return new SpriteFont(await context, rows, cols, fgColors, bgColors);
+	static async load(spriteFont, characterMap) {
+		let imageElement = await this.loadImageElement(spriteFont);
+		let context = await this.imageElement2Canvas(imageElement);
+		return new SpriteFont(context, characterMap);
 	}
 
-	static loadAll(spriteFonts, rows, cols, fgColors, bgColors) {
-		let promises = spriteFonts.map((spritefont) => {
-			return this.load(spritefont, rows, cols, fgColors, bgColors);
-		});
-
-		return Promise.all(promises);
-	}
-
-	constructor(context, rows, cols, bgColors, fgColors) {
+	constructor(context, characterMap) {
 		this._context = context;
 		this._rows = rows;
 		this._cols = cols;
