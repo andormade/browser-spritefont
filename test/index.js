@@ -15,8 +15,7 @@ describe('spriteFont.js', function() {
 		SpriteFont.load(spriteFontSrc, {
 			cols : 2,
 			rows : 5,
-			bgColors : colors,
-			fgColors : colors
+			colors : colors
 		}).then((_spriteFont) => {
 			spriteFont = _spriteFont;
 			done();

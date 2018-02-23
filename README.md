@@ -5,7 +5,19 @@
 # spritefont-loader
 Loads sprite fonts into the browser that were generated with the [sprite font generator](https://github.com/andormade/spritefont).
 
+## Installation
+This module is distributed via npm:
+```
+npm install spritefont-loader
+```
 
+## Usage
+```
+import SpritefontLoader from 'spritefont-loader';
+
+const options = { rows: 8, cols: 4, colors: [#ffffff, #00000]};
+const spriteFont = SpritefontLoader.load('spritefont.png', options);
+```
 
 [travis-svg]: https://travis-ci.org/andormade/spritefont-loader.svg?branch=master
 [travis-url]: https://travis-ci.org/andormade/spritefont-loader

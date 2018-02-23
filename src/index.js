@@ -40,8 +40,15 @@ export default class SpriteFont {
 		this._context = context;
 		this._rows = options.rows;
 		this._cols = options.cols;
-		this._bgColors = options.bgColors;
-		this._fgColors = options.fgColors;
+
+		if (options.colors) {
+			this._bgColors = options.colors;
+			this._fgColors = options.colors;
+		}
+		else {
+			this._bgColors = options.bgColors;
+			this._fgColors = options.fgColors;
+		}
 	}
 
 	getRows() {
