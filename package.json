@@ -1,12 +1,10 @@
 {
-  "name": "browser-spritefont",
-  "version": "0.0.1",
+  "name": "spritefont-loader",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build:babel": "babel src --out-dir dist",
-    "build:browserify": "browserify dist/index.js --standalone SpriteFont > browser/spritefont.js",
-    "build": "npm run build:babel && npm run build:browserify",
+    "build": "babel src --out-dir dist",
     "prepublish": "npm run build",
     "test": "npm run build && mocha"
   },

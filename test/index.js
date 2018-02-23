@@ -12,7 +12,12 @@ describe('spriteFont.js', function() {
 	var spriteFontSrc = require('./spriteFontSrc');
 
 	beforeEach(function(done) {
-		SpriteFont.load(spriteFontSrc, 5, 2, colors, colors).then((_spriteFont) => {
+		SpriteFont.load(spriteFontSrc, {
+			cols : 2,
+			rows : 5,
+			bgColors : colors,
+			fgColors : colors
+		}).then((_spriteFont) => {
 			spriteFont = _spriteFont;
 			done();
 		}, done);
