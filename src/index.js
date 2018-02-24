@@ -30,8 +30,6 @@ export default class SpriteFont {
 			};
 
 			image.setAttribute('src', src);
-
-			console.log('eddigeljut', image.complete);
 		});
 	}
 
