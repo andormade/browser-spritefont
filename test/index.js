@@ -2,21 +2,29 @@ var assert = require('assert');
 var SpriteFont = require('..');
 
 require('jsdom-global')('', {
-	resources: 'usable',
+	resources: 'usable'
 });
 
 describe('spriteFont.js', function() {
-
 	var spriteFont = null;
-	var colors = ['#000000', '#0000ff', '#00ff00', '#00ffff', '#ff0000', '#ff00ff', '#ffff00', '#ffffff'];
+	const colors = [
+		'#000000',
+		'#0000ff',
+		'#00ff00',
+		'#00ffff',
+		'#ff0000',
+		'#ff00ff',
+		'#ffff00',
+		'#ffffff'
+	];
 	var spriteFontSrc = require('./spriteFontSrc');
 
 	beforeEach(function(done) {
 		SpriteFont.load(spriteFontSrc, {
-			cols : 2,
-			rows : 5,
-			colors : colors
-		}).then((_spriteFont) => {
+			cols: 2,
+			rows: 5,
+			colors: colors
+		}).then(_spriteFont => {
 			spriteFont = _spriteFont;
 			done();
 		}, done);
@@ -72,8 +80,14 @@ describe('spriteFont.js', function() {
 
 	describe('getCharacterCoordinatesOnSprite()', function() {
 		it('', function() {
-			assert.deepEqual(spriteFont.getCharacterCoordinatesOnBlock(0), [0 , 0]);
-			assert.deepEqual(spriteFont.getCharacterCoordinatesOnBlock(1), [0 , 1]);
+			assert.deepEqual(spriteFont.getCharacterCoordinatesOnBlock(0), [
+				0,
+				0
+			]);
+			assert.deepEqual(spriteFont.getCharacterCoordinatesOnBlock(1), [
+				0,
+				1
+			]);
 		});
 	});
 });

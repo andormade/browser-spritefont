@@ -1,14 +1,14 @@
-import "babel-polyfill";
+import 'babel-polyfill';
 
 const DIRECTION_LEFT_TO_RIGHT = 0;
 const DIRECTION_TOP_TO_BOTTOM = 1;
 
 export default class SpriteFont {
 	static imageElement2Canvas(imageElement) {
-		let canvas = document.createElement('canvas');
+		const canvas = document.createElement('canvas');
 		canvas.width = imageElement.width;
 		canvas.height = imageElement.height;
-		let context = canvas.getContext('2d');
+		const context = canvas.getContext('2d');
 		context.drawImage(imageElement, 0, 0);
 		return context;
 	}
@@ -19,20 +19,25 @@ export default class SpriteFont {
 				resolve(src);
 			}
 
-			let image = new Image();
+			const image = new Image();
+
 			image.onload = function() {
 				resolve(image);
 			};
+
 			image.onerror = function() {
 				reject(image);
-			}
+			};
+
 			image.setAttribute('src', src);
+
+			console.log('eddigeljut', image.complete);
 		});
 	}
 
 	static async load(spriteFont, options) {
-		let imageElement = await this.loadImageElement(spriteFont);
-		let context = await this.imageElement2Canvas(imageElement);
+		const imageElement = await this.loadImageElement(spriteFont);
+		const context = this.imageElement2Canvas(imageElement);
 		return new SpriteFont(context, options);
 	}
 
@@ -42,12 +47,11 @@ export default class SpriteFont {
 		this._cols = options.cols;
 
 		if (options.colors) {
-			this._bgColors = options.colors;
-			this._fgColors = options.colors;
-		}
-		else {
-			this._bgColors = options.bgColors;
-			this._fgColors = options.fgColors;
+			this._bgColors = [...options.colors];
+			this._fgColors = [...options.colors];
+		} else {
+			this._bgColors = [...options.bgColors];
+			this._fgColors = [...options.fgColors];
 		}
 	}
 
@@ -93,22 +97,16 @@ export default class SpriteFont {
 
 	getCharacterCoordinatesOnBlock(pos) {
 		if (this.getDirection() === DIRECTION_LEFT_TO_RIGHT) {
-			return [
-				pos % this.getRows(),
-				Math.floor(pos / this.getRows())
-			];
+			return [pos % this.getRows(), Math.floor(pos / this.getRows())];
 		}
 
-		return [
-			Math.floor(pos / this.getCols()),
-			pos % this.getCols()
-		];
+		return [Math.floor(pos / this.getCols()), pos % this.getCols()];
 	}
 
 	getCharacterCoordinatesOnSprite(pos, fgColor, bgColor) {
-		let bgColorPos = this._bgColors.indexOf(bgColor);
-		let fgColorPos = this._fgColors.indexOf(fgColor);
-		let [x, y] = this.getCharacterCoordinatesOnBlock(pos);
+		const bgColorPos = this._bgColors.indexOf(bgColor);
+		const fgColorPos = this._fgColors.indexOf(fgColor);
+		const [x, y] = this.getCharacterCoordinatesOnBlock(pos);
 
 		return [
 			x + bgColorPos * this.getCols(),
@@ -117,11 +115,12 @@ export default class SpriteFont {
 	}
 
 	getCharacterCoordinatesOnSpriteInPixels(pos, fgColor, bgColor) {
-		let [x, y] = this.getCharacterCoordinatesOnSprite(pos, bgColor, fgColor);
+		const [x, y] = this.getCharacterCoordinatesOnSprite(
+			pos,
+			bgColor,
+			fgColor
+		);
 
-		return [
-			x * this.getCharacterWidth(),
-			y * this.getCharacterHeight()
-		];
+		return [x * this.getCharacterWidth(), y * this.getCharacterHeight()];
 	}
 }

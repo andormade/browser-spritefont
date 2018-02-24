@@ -19,6 +19,8 @@ const options = { rows: 8, cols: 4, colors: [#ffffff, #00000]};
 const spriteFont = SpritefontLoader.load('spritefont.png', options);
 ```
 
+This code is released under the MIT license, feel free to do whatever you want with it.
+
 [travis-svg]: https://travis-ci.org/andormade/spritefont-loader.svg?branch=master
 [travis-url]: https://travis-ci.org/andormade/spritefont-loader
 [david-deps-svg]: https://david-dm.org/andormade/spritefont-loader.svg
