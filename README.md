@@ -1,3 +1,4 @@
+[![npm version][npm-svg]][npm-url]
 [![Build Status][travis-svg]][travis-url]
 [![Dependency Status][david-deps-svg]][david-deps-url]
 [![Dev dependency Status][david-devdeps-svg]][david-devdeps-url]
@@ -21,6 +22,8 @@ const spriteFont = SpritefontLoader.load('spritefont.png', options);
 
 This code is released under the MIT license, feel free to do whatever you want with it.
 
+[npm-svg]: https://img.shields.io/npm/v/spritefont-loader.svg
+[npm-url]: https://www.npmjs.com/package/spritefont-loader
 [travis-svg]: https://travis-ci.org/andormade/spritefont-loader.svg?branch=master
 [travis-url]: https://travis-ci.org/andormade/spritefont-loader
 [david-deps-svg]: https://david-dm.org/andormade/spritefont-loader.svg
